@@ -1,0 +1,129 @@
+
+<!-- saved from url=(0047)http://linux-sxs.org/housekeeping/lscolors.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>COLORS Lscolors - Linux StepByStep</title>
+  <script type="text/javascript" src="chrome-extension://halnfobaneppemjnonmmhngbfifnafgd/chromevis/chromeVis_main.js?1286959048667"></script><script type="text/javascript" src="chrome-extension://halnfobaneppemjnonmmhngbfifnafgd/chromevis/chromeVis_extensionBridge.js?1286959048668"></script><script type="text/javascript" src="chrome-extension://halnfobaneppemjnonmmhngbfifnafgd/common/selectionUtil.js?1286959048668"></script><script type="text/javascript" src="chrome-extension://halnfobaneppemjnonmmhngbfifnafgd/common/traverseContent.js?1286959048668"></script><script type="text/javascript" src="chrome-extension://halnfobaneppemjnonmmhngbfifnafgd/common/focusUtil.js?1286959048668"></script><script type="text/javascript" src="chrome-extension://halnfobaneppemjnonmmhngbfifnafgd/chromevis/chromeVis_reader.js?1286959048668"></script><script type="text/javascript" src="chrome-extension://halnfobaneppemjnonmmhngbfifnafgd/chromevis/chromeVis_lens.js?1286959048668"></script><script type="text/javascript" src="chrome-extension://halnfobaneppemjnonmmhngbfifnafgd/third_party/keycode.js?1286959048668"></script></head>
+  <body bgcolor="#ffffff" link="#006ccc">
+  <font face="Tahoma, Book Antiqua, Times New Roman, Times">
+
+    <!--SXS HEADER END-->
+    <font size="+3">COLORS-Lscolors</font>
+
+    <p>From: <a href="mailto:tonybart@bigfoot.com">Bartman</a></p>
+
+    <p>Here is an easy way to set different colours for different
+    kinds of files when using the <tt><font color="#3333FF">ls</font></tt> command.</p>
+
+    <p>Add the following lines to the bottom of your <tt><font color="#3333FF">~/.bashrc</font></tt> file -</p>
+
+    <p><tt><font color="#0000FF">alias ls='ls
+    --color'</font></tt><br>
+     <tt><font color="#0000FF">LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'</font></tt><br>
+
+     <tt><font color="#0000FF">export LS_COLORS</font></tt></p>
+
+    <p>The first line makes ls use the <tt><font color="#3333FF">--color</font></tt> parameter by default, which tells
+    ls to display files in different colours based on the setting
+    of the <tt><font color="#3333FF">LS_COLORS</font></tt>
+    variable.</p>
+
+    <p>The second line is the tricky one, and what I have worked
+    out so far has been by trial and error.&nbsp; The parameters
+    (di, fi, etc.) refer to different Linux file types. I have
+    worked them out as shown</p>
+
+    <p id="aeaoofnhgocdbnbeljkmbjdmhbcokfdb-mousedown"><tt><font color="#3333FF">di</font></tt> = directory<br>
+     <tt><font color="#3333FF">fi</font></tt> = file<br>
+     <tt><font color="#3333FF">ln</font></tt> = symbolic link<br>
+     <tt><font color="#3333FF">pi</font></tt> = fifo file<br>
+     <tt><font color="#3333FF">so</font></tt> = socket file<br>
+     <tt><font color="#3333FF">bd</font></tt> = block (buffered)
+    special file<br>
+     <tt><font color="#3333FF">cd</font></tt> = character
+    (unbuffered) special file<br>
+     <tt><font color="#3333FF">or</font></tt> = symbolic link
+    pointing to a non-existent file (orphan)<br>
+     <tt><font color="#3333FF">mi</font></tt> = non-existent file
+    pointed to by a symbolic link (visible when you type ls -l)<br>
+     <tt><font color="#3333FF">ex</font></tt> = file which is
+    executable (ie. has 'x' set in permissions).</p>
+
+    <p>The <tt><font color="#3333FF">*.rpm=90</font></tt> parameter
+    at the end tells ls to display any files ending in .rpm in the
+    specified colour, in this case colour 90 (dark grey). This can
+    be applied to any types of files (eg. you could use '*.png=35'
+    to make jpeg files appear purple.) As many or as few parameters
+    as you like can go into the <tt><font color="#3333FF">LS_COLORS</font></tt> variable, as long as the
+    parameters are separated by colons.</p>
+
+    <p>Using trial and error (and a little bash script I wrote...
+    my first one ever! :) I worked out all the colour codes, at
+    least my interpretation of them -</p>
+
+    <p><tt>0&nbsp;&nbsp; = default colour</tt><br>
+     <tt>1&nbsp;&nbsp; = bold</tt><br>
+     <tt>4&nbsp;&nbsp; = underlined</tt><br>
+     <tt>5&nbsp;&nbsp; = flashing text</tt><br>
+     <tt>7&nbsp;&nbsp; = reverse field</tt><br>
+     <tt>31&nbsp; = red</tt><br>
+     <tt>32&nbsp; = green</tt><br>
+     <tt>33&nbsp; = orange</tt><br>
+     <tt>34&nbsp; = blue</tt><br>
+     <tt>35&nbsp; = purple</tt><br>
+     <tt>36&nbsp; = cyan</tt><br>
+     <tt>37&nbsp; = grey</tt><br>
+     <tt>40&nbsp; = black background</tt><br>
+     <tt>41&nbsp; = red background</tt><br>
+     <tt>42&nbsp; = green background</tt><br>
+     <tt>43&nbsp; = orange background</tt><br>
+     <tt>44&nbsp; = blue background</tt><br>
+     <tt>45&nbsp; = purple background</tt><br>
+     <tt>46&nbsp; = cyan background</tt><br>
+     <tt>47&nbsp; = grey background</tt><br>
+     <tt>90&nbsp; = dark grey</tt><br>
+     <tt>91&nbsp; = light red</tt><br>
+     <tt>92&nbsp; = light green</tt><br>
+     <tt>93&nbsp; = yellow</tt><br>
+     <tt>94&nbsp; = light blue</tt><br>
+     <tt>95&nbsp; = light purple</tt><br>
+     <tt>96&nbsp; = turquoise</tt><br>
+     <tt>100 = dark grey background</tt><br>
+     <tt>101 = light red background</tt><br>
+     <tt>102 = light green background</tt><br>
+     <tt>103 = yellow background</tt><br>
+     <tt>104 = light blue background</tt><br>
+     <tt>105 = light purple background</tt><br>
+     <tt>106 = turquoise background</tt></p>
+
+    <p>These can even be combined, so that a parameter like:<br>
+     <tt><font color="#3333FF">di=5;31;42</font></tt><br>
+     in your <tt><font color="#3333FF">LS_COLORS</font></tt>
+    variable would make directories appear in flashing red text
+    with a green background!</p>
+
+    <p>Setting <tt><font color="#3333FF">LS_COLORS</font></tt> does
+    more than just make your ls listings look pretty (although it
+    certainly does do that), it is also very helpful in identifying
+    files while wading through a file system.</p>
+
+    <p>If anyone finds out additional info on <tt><font color="#3333FF">LS_COLORS</font></tt>, or spots an error, please
+    e-mail me, I would like to know. Any questions may also be
+    directed to me by e-mail.</p>
+
+    <p>Bartman</p>
+   <table width="100%" border="0">
+    <tbody><tr>
+      <td align="left">
+        <a href="http://linux-sxs.org/site_search.html"><img src="./COLORS Lscolors - Linux StepByStep_files/topicprivacy.png" alt="search" width="41" height="23" border="0" align="center">Search</a>
+      </td>
+      <td align="right">
+        <a href="http://linux-sxs.org/parent.html" target="_top"><img src="./COLORS Lscolors - Linux StepByStep_files/logo_sm.png" alt="Index" width="165" height="50" border="0"></a>
+      </td>
+    </tr>
+  </tbody></table>
+  </font>
+  
+
+
+
+<div id="chromeVisPage2ExtensionDiv" style="display: none; ">Ctrl+s</div><div id="chromeVisBackground2LensDiv" style="display: none; " data-isanchored="true" data-iscentered="true" data-textmag="1.5" data-textcolor="#008000" data-bgcolor="#000000"></div><div id="chromeVisExtension2PageDiv" style="display: none; "></div><span style="border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); border-top-width: medium; border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-top-style: groove; border-right-style: groove; border-bottom-style: groove; border-left-style: groove; position: absolute; z-index: 1e+011; min-height: 5px; border-top-left-radius: 7px 7px; border-top-right-radius: 7px 7px; border-bottom-right-radius: 7px 7px; border-bottom-left-radius: 7px 7px; display: none; top: 0px; min-width: 1230px; max-width: 1230px; left: 10px; right: 100px; "></span></body></html>
