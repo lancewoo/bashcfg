@@ -1,0 +1,4 @@
+#当命令行上没有输入时，上下方向键的作用和以前一样，但是当输入了内容，如ssh -l，之后，bash只会列出以该字符串开头的命令，这样极大地缩小了搜索范围，非常高效。
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
